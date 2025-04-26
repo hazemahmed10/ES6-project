@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+        />
+
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <main>
+            <section id="home" class="page hidden">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light px-4">
+                    <a class="navbar-brand fw-bold" href="#">MyShop</a>
+                    <div class="collapse navbar-collapse">
+                        <ul class="navbar-nav me-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contact</a>
+                            </li>
+                        </ul>
+                        <div class="d-flex">
+                            <button id="cart" class="btn btn-outline-primary">
+                                🛒 Cart
+                            </button>
+                            <button
+                                class="btn btn-outline-success"
+                                id="userBtn"
+                            >
+                                Login
+                            </button>
+                            <button
+                                class="btn btn-outline-danger"
+                                id="logoutBtn"
+                            >
+                                Logout
+                            </button>
+                        </div>
+                    </div>
+                </nav>
+
+                <!-- Image Slider -->
+                <div id="main">
+                    <!-- ======== -->
+                    <div class="container">
+                        <div class="slideshow-container">
+                            <div class="slides active">
+                                <img src="/images/1.jpg" style="width: 100%" />
+                            </div>
+
+                            <div class="slides">
+                                <img src="/images/5.jpeg" style="width: 100%" />
+                            </div>
+
+                            <div class="slides">
+                                <img src="/images/3.png" style="width: 100%" />
+                            </div>
+
+                            <div class="slides">
+                                <img src="/images/1.jpg" style="width: 100%" />
+                            </div>
+
+                            <button class="prev" onclick="changeSlide(-1)">
+                                &#10094;
+                            </button>
+                            <button class="next" onclick="changeSlide(1)">
+                                &#10095;
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- === -->
+                    <div class="filterButtons">
+                        <button class="btn btn-primary" onclick="viewer(`all`)">
+                            All
+                        </button>
+                        <button
+                            class="btn btn-primary"
+                            onclick="viewer(`clothes`)"
+                        >
+                            Clothes
+                        </button>
+                        <button
+                            class="btn btn-primary"
+                            onclick="viewer(`phones`)"
+                        >
+                            Phones
+                        </button>
+                        <button
+                            class="btn btn-primary"
+                            onclick="viewer(`supplies`)"
+                        >
+                            supplies
+                        </button>
+                    </div>
+                    <div class="filterPrice">
+                        <label for="price">Filter bt price</label>
+                        <input id="inputPrice" type="number" />
+                    </div>
+                    <!-- Products Section -->
+                    <div class="container">
+                        <div class="row" id="productGrid"></div>
+                    </div>
+                    <footer id="footer">
+                        <div class="footer-container">
+                            <p>&copy; 2025 MyShop. All rights reserved.</p>
+                            <div class="footer-links">
+                                <a href="#">Privacy Policy</a>
+                                <a href="#">Terms of Service</a>
+                                <a href="#">Contact Us</a>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+                <button class="btn btn-primary hidden" id="buyNow">
+                    Buy Now
+                </button>
+            </section>
+
+            <!-- Product Details Section -->
+            <div id="productDetails" class="hidden page">
+                <img id="detailImage" src="" alt="" />
+                <h3 id="detailName"></h3>
+                <p id="detailCategory" class="text-muted"></p>
+                <p id="detailPrice"></p>
+                <button
+                    id="cartbutton"
+                    class="btn btn-primary mt-lg-3"
+                    onclick=""
+                >
+                    Add to Cart
+                </button>
+                <button id="backBtn" class="btn">Back to Products</button>
+            </div>
+            <!-- ======================================================================== -->
+            <section id="register" class="page hidden">
+                <div class="form-container">
+                    <h2 class="form-title">Register</h2>
+                    <form id="registerForm" novalidate>
+                        <div class="mb-2">
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="name"
+                                placeholder="Enter Name"
+                                required
+                            />
+                        </div>
+                        <p class="error-message" id="errorMsg"></p>
+                        <div class="mb-2">
+                            <input
+                                type="email"
+                                class="form-control"
+                                id="regemail"
+                                placeholder="Enter Email"
+                                required
+                            />
+                        </div>
+
+                        <div class="mb-2">
+                            <input
+                                type="password"
+                                class="form-control"
+                                id="regpassword"
+                                placeholder="Enter Password"
+                                required
+                            />
+                        </div>
+
+                        <div class="mb-3">
+                            <input
+                                type="password"
+                                class="form-control"
+                                id="confirmPassword"
+                                placeholder="confirm Password"
+                                required
+                            />
+                        </div>
+
+                        <div class="text-center">
+                            <button
+                                type="submit"
+                                class="btn btn-outline-dark text-purple fw-bold"
+                            >
+                                Register
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <section id="loginFormSection" class="page hidden">
+                <div class="form-container">
+                    <h2 class="form-title">Login</h2>
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <input
+                                type="email"
+                                class="form-control"
+                                id="email"
+                                placeholder="Enter Email"
+                                required
+                            />
+                        </div>
+
+                        <div class="mb-4">
+                            <input
+                                type="password"
+                                class="form-control"
+                                id="password"
+                                placeholder="Enter Password"
+                                required
+                            />
+                        </div>
+
+                        <p class="error-message" id="errorLoginMsg">
+                            Wrong credentials
+                        </p>
+
+                        <div class="text-center">
+                            <button
+                                type="submit"
+                                class="btn btn-outline-dark text-purple fw-bold"
+                            >
+                                login
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+        <script src="script.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
